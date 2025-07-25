@@ -1,51 +1,81 @@
 :root {
   --bg-color: #f4f4f4;
-  --container-bg: #ffffff;
+  --container-bg: #ffffffcc;
   --text-color: #222;
   --accent-color: #6a11cb;
   --button-bg: #6a11cb;
   --button-hover: #5311b8;
   --result-color: #1c9c61;
+  --sparkle-color: #ffccff;
 }
 
 [data-theme="dark"] {
   --bg-color: #121212;
-  --container-bg: #1e1e1e;
+  --container-bg: #1e1e1ecc;
   --text-color: #f4f4f4;
   --accent-color: #bb86fc;
   --button-bg: #bb86fc;
   --button-hover: #9f5efc;
   --result-color: #00e676;
+  --sparkle-color: #ffe9ff;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: var(--bg-color);
+  background-color: var(--bg-color);
   color: var(--text-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
-  transition: background 0.4s, color 0.4s;
+  overflow: hidden;
+  position: relative;
+}
+
+.magic-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, rgba(255,255,255,0.03), rgba(0,0,0,0.1));
+  background-size: 300% 300%;
+  animation: shimmer 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .container {
-  background: var(--container-bg);
+  position: relative;
+  margin: 5vh auto;
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   text-align: center;
   max-width: 400px;
   width: 90%;
+  background: var(--container-bg);
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
   transition: background 0.4s;
+  z-index: 1;
 }
 
-h1 {
+.glow-box {
+  box-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+}
+
+.sparkle-text {
+  font-family: 'Macondo', cursive;
+  font-size: 2rem;
   color: var(--accent-color);
-  margin-bottom: 1rem;
+  animation: sparkle 2s infinite alternate;
+}
+
+@keyframes sparkle {
+  0% { text-shadow: 0 0 5px var(--sparkle-color); }
+  100% { text-shadow: 0 0 20px var(--sparkle-color); }
 }
 
 p {
@@ -60,6 +90,7 @@ input {
   border-radius: 8px;
   margin-bottom: 1rem;
   font-size: 1rem;
+  background: #ffffffdd;
 }
 
 button {
@@ -70,11 +101,12 @@ button {
   border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
   background: var(--button-hover);
+  transform: scale(1.05);
 }
 
 #result {
@@ -96,12 +128,13 @@ button:hover {
 
 /* Dark Mode Toggle Switch */
 .toggle-container {
-  position: absolute;
+  position: fixed;
   top: 1rem;
   right: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  z-index: 10;
 }
 
 .switch {
@@ -142,7 +175,7 @@ button:hover {
 }
 
 input:checked + .slider {
-  background-color: #6a11cb;
+  background-color: var(--accent-color);
 }
 
 input:checked + .slider:before {
