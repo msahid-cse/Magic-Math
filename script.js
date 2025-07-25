@@ -36,7 +36,7 @@ toggle.addEventListener("change", () => {
   label.textContent = newTheme === "dark" ? "Dark Mode" : "Light Mode";
 });
 
-// Anti-inspect protection
+// Anti-inspect
 document.addEventListener('contextmenu', event => event.preventDefault());
 document.onkeydown = function(e) {
   if (
