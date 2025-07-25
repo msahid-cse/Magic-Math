@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Magic Math Trick 🔮</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="toggle-container">
+    <label class="switch">
+      <input type="checkbox" id="themeToggle">
+      <span class="slider"></span>
+    </label>
+    <span id="modeLabel">Light Mode</span>
+  </div>
+
+  <div class="container">
+    <h1>🔮 Magic Math Trick</h1>
+    <p>Pick a number, multiply by 9, remove one digit, and enter the result.</p>
+
+    <input type="number" id="inputNumber" placeholder="Enter remaining number" />
+    <button onclick="predictDigit()">Predict Missing Digit</button>
+
+    <div id="result" class="hidden"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
