@@ -29,6 +29,7 @@ body {
   min-height: 100vh;
   overflow: hidden;
   position: relative;
+  transition: background-color 0.4s, color 0.4s;
 }
 
 .magic-bg {
@@ -50,7 +51,7 @@ body {
 
 .container {
   position: relative;
-  margin: 5vh auto;
+  margin: 20vh auto;
   padding: 2rem;
   border-radius: 16px;
   text-align: center;
@@ -58,12 +59,9 @@ body {
   width: 90%;
   background: var(--container-bg);
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  transition: background 0.4s;
+  transition: background-color 0.4s;
   z-index: 1;
-}
-
-.glow-box {
-  box-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+  user-select: none;
 }
 
 .sparkle-text {
@@ -71,6 +69,7 @@ body {
   font-size: 2rem;
   color: var(--accent-color);
   animation: sparkle 2s infinite alternate;
+  margin-bottom: 1rem;
 }
 
 @keyframes sparkle {
@@ -91,6 +90,7 @@ input {
   margin-bottom: 1rem;
   font-size: 1rem;
   background: #ffffffdd;
+  transition: background-color 0.4s;
 }
 
 button {
@@ -102,6 +102,7 @@ button {
   cursor: pointer;
   font-size: 1rem;
   transition: background 0.3s, transform 0.2s;
+  user-select: none;
 }
 
 button:hover {
@@ -126,58 +127,43 @@ button:hover {
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* Dark Mode Toggle Switch */
-.toggle-container {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+/* Theme Toggle */
+.theme-toggle {
+  text-align: right;
+  margin-bottom: 10px;
+  position: relative;
   z-index: 10;
 }
 
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 26px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
+.theme-toggle button {
+  background: transparent;
+  border: none;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  border-radius: 26px;
-  transition: 0.4s;
+  color: var(--accent-color);
+  transition: color 0.4s ease;
+  padding: 0;
 }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  border-radius: 50%;
-  transition: 0.4s;
+.theme-toggle button:hover {
+  color: var(--sparkle-color);
 }
 
-input:checked + .slider {
-  background-color: var(--accent-color);
+.theme-toggle .icon {
+  display: none;
 }
 
-input:checked + .slider:before {
-  transform: translateX(24px);
+.theme-toggle .icon.active {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .sparkle-text {
+    font-size: 1.5rem;
+  }
+  input, button {
+    font-size: 0.9rem;
+  }
 }

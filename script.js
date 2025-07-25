@@ -18,26 +18,36 @@ function predictDigit() {
 
   const removedDigit = (9 - (sum % 9)) % 9;
 
-  resultDiv.textContent = removedDigit === 0
-    ? "✨ The removed digit is either 0 or 9."
-    : `✨ The removed digit is: ${removedDigit}`;
+  if (removedDigit === 0) {
+    resultDiv.textContent = "✨ The removed digit is either 0 or 9.";
+  } else {
+    resultDiv.textContent = `✨ The removed digit is: ${removedDigit}`;
+  }
 
   resultDiv.classList.remove("hidden");
 }
 
-// Theme toggle
-const toggle = document.getElementById("themeToggle");
-const label = document.getElementById("modeLabel");
+// Theme toggle with sun/moon icons
+const themeSwitchBtn = document.getElementById("themeSwitch");
+const sunIcon = document.getElementById("sunIcon");
+const moonIcon = document.getElementById("moonIcon");
 
-toggle.addEventListener("change", () => {
-  const theme = document.documentElement.getAttribute("data-theme");
-  const newTheme = theme === "dark" ? "light" : "dark";
+themeSwitchBtn.addEventListener("click", () => {
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+  const newTheme = currentTheme === "light" ? "dark" : "light";
   document.documentElement.setAttribute("data-theme", newTheme);
-  label.textContent = newTheme === "dark" ? "Dark Mode" : "Light Mode";
+
+  if (newTheme === "dark") {
+    sunIcon.classList.remove("active");
+    moonIcon.classList.add("active");
+  } else {
+    sunIcon.classList.add("active");
+    moonIcon.classList.remove("active");
+  }
 });
 
 // Anti-inspect
-document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener('contextmenu', e => e.preventDefault());
 document.onkeydown = function(e) {
   if (
     e.key === 'F12' ||

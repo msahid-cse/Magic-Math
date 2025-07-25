@@ -2,23 +2,26 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Magic Math Trick 🔮</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="magic-bg"></div>
 
-  <div class="toggle-container">
-    <label class="switch">
-      <input type="checkbox" id="themeToggle">
-      <span class="slider"></span>
-    </label>
-    <span id="modeLabel">Light Mode</span>
-  </div>
+  <div class="container">
+    <div class="theme-toggle">
+      <button id="themeSwitch" aria-label="Toggle theme">
+        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="28" height="28" class="icon active" >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2m7-9h2M3 12H1m16.364-7.364l1.414 1.414M4.222 19.778l1.414-1.414M16.364 16.364l1.414 1.414M4.222 4.222l1.414 1.414M12 7a5 5 0 100 10 5 5 0 000-10z" />
+        </svg>
+        <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="28" height="28" class="icon" >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+        </svg>
+      </button>
+    </div>
 
-  <div class="container glow-box">
     <h1 class="sparkle-text">🔮 Magic Math Trick</h1>
     <p>Pick a number, multiply by 9, remove one digit, and enter the result.</p>
 
